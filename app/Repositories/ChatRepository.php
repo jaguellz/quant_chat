@@ -50,4 +50,21 @@ class ChatRepository extends BaseRepository
             "second_user_id" => $second_user_id,
         ]);
     }
+
+    /**
+     * @param $user_id
+     * @return mixed
+     */
+    public function getUserChats($user_id){
+        $privateChats = $this->startCondition()
+            ->where('first_user_id', $user_id)
+            ->orWhere('second_user_id', $user_id)
+            ->select('id')
+            ->get();
+        $groupChats = DB::table('chats_users')
+            ->where('user_id', '=', $user_id)
+            ->select('id')
+            ->get();
+        return $privateChats + $groupChats;
+    }
 }

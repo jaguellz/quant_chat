@@ -10,22 +10,27 @@ class MessageController extends Controller
 {
     /**
      * @param MessageRepository $messageRepository
-     * @param string $text
-     * @param int $chat_id
-     * @param int $attachment
+     * @param Request $request
      * @return mixed
      */
-    public function textTo(MessageRepository $messageRepository, $text, $chat_id, $attachment = null){
-        $user_id = Auth::id();
-        return $messageRepository->textTo($user_id, $chat_id, $text);
+    public function textTo(MessageRepository $messageRepository, Request $request){
+        $data = [
+            'user_id' => $request->user_id,
+            'chat_id' => $request->chat_id,
+            'text' => $request->text,
+        ] ;
+        return $messageRepository->textTo($data['user_id'], $data['chat_id'], $data['text']);
     }
 
     /**
      * @param MessageRepository $messageRepository
-     * @param int $chat_id
+     * @param Request $request
      * @return mixed
      */
-    public function getFromChat(MessageRepository $messageRepository, $chat_id){
-        return $messageRepository->getFromChat($chat_id);
+    public function getFromChat(MessageRepository $messageRepository, Request $request){
+        $data = [
+            'chat_id' => $request->chat_id,
+        ];
+        return $messageRepository->getFromChat($data['chat_id']);
     }
 }

@@ -6,6 +6,11 @@ use App\Repositories\BaseRepository;
 use App\Models\Message;
 use Illuminate\Database\Eloquent\Model;
 
+/**
+ * Class MessageRepository
+ * @package App\Repositories
+ * @method Message startCondition()
+ */
 class MessageRepository extends BaseRepository {
     /**
      * @var Model
@@ -31,15 +36,24 @@ class MessageRepository extends BaseRepository {
             'from_user_id' => $user_id,
             'chat_id' => $chat_id,
             'text' => $text,
-            'date' => now(),
+            'time' => now(),
         ]);
     }
 
     /**
      * @param int $chat_id
+     * @param int $user_id
      * @return mixed
+     * get all messages from chat and makes it read
      */
-    public function getFromChat($chat_id){
+    public function getFromChat($chat_id, $user_id){
+        $this->startCondition()
+            ->where('chat_id', $chat_id)
+            ->where('from_user_id', '!=', $user_id)
+            ->where('read, 0')
+            ->update([
+                'is_read' => 1,
+            ]);
         return $messages = $this->startCondition()
             ->where('chat_id', $chat_id)
             ->get();

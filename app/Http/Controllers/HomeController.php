@@ -25,11 +25,11 @@ class HomeController extends Controller
     {
         $msgs = [
             [
-                'time' => '8 минут',
-                'text' => '1',
-                'url' => 'assets/images/avatars/12.jpg',
+        'time' => '8 минут',
+        'text' => '1',
+        'url' => 'assets/images/avatars/12.jpg',
 
-            ],
+    ],
             [
                 'time' => '4 минут',
                 'text' => '2 ',

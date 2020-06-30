@@ -22,7 +22,7 @@ class CreateMessagesTable extends Migration
             $table->foreign('from_user_id')->references('id')->on('users');
             $table->unsignedBigInteger('attachment_id')->nullable();
             $table->foreign('attachment_id')->references('id')->on('attachments');
-            $table->dateTime('date');
+            $table->dateTime('time');
             $table->boolean('is_read')->default(0);
             $table->timestamps();
         });
