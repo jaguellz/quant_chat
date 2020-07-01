@@ -19,4 +19,8 @@ Route::get('/', function () {
 
 Auth::routes();
 
+Route::middleware('admin')
+    ->get('/register', function () {
+        return view('auth.register');
+    })->name('register');
 Route::get('/home', 'HomeController@index')->name('home');

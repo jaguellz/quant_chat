@@ -67,6 +67,10 @@
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                         @csrf
                                     </form>
+
+                                    @if(Auth::user()->is_admin == 1)
+                                        <a class="dropdown-item" href="{{route('register')}}">Register user</a>
+                                    @endif
                                 </div>
                             </li>
                         @endguest
