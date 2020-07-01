@@ -28,9 +28,8 @@ class MessageController extends Controller
      * @return mixed
      */
     public function getFromChat(MessageRepository $messageRepository, Request $request){
-        $data = [
-            'chat_id' => $request->chat_id,
-        ];
-        return $messageRepository->getFromChat($data['chat_id']);
+        $chat_id = $request->chat_id;
+        $user_id = $request->user_id;
+        return $messageRepository->getFromChat($chat_id, $user_id);
     }
 }
