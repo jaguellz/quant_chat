@@ -1,40 +1,71 @@
 <template>
     <div class="container">
-        <div class="container-xxl py-6 py-lg-10">
+        <!-- Message from  -->
+        <div v-for="msg in this.msgs">
+        <div class="message" v-if="msg.type === 1">
+            <!-- Avatar -->
+            <a class="avatar avatar-sm mr-4 mr-lg-5" href="#" data-chat-sidebar-toggle="#chat-1-user-profile">
+                <img class="avatar-img" src="https://userinyerface.com/images/avatar_placeholder.png" alt="">
+            </a>
 
+            <!-- Message: body -->
+            <div class="message-body">
 
-            <!-- Message -->
-            <div class="message message-right" v-for="msg in this.msgs">
-                <!-- Avatar -->
-                <div class="avatar avatar-sm ml-4 ml-lg-5 d-none d-lg-block">
-                    <img class="avatar-img" :src="msg.url" alt="">
-                </div>
+                <!-- Message: row -->
+                <div class="message-row">
+                    <div class="d-flex align-items-center">
 
-                <!-- Message: body -->
-                <div class="message-body">
+                        <!-- Message: content -->
+                        <div class="message-content bg-light">
+                            <div>{{msg.text}}</div>
 
-                    <!-- Message: row -->
-                    <div class="message-row">
-                        <div class="d-flex align-items-center justify-content-end">
-                            <!-- Message: content -->
-                            <div class="message-content bg-primary text-white">
-                                <div>{{msg.text}}</div>
-
-                                <div class="mt-1">
-                                    <small class="opacity-65">{{msg.time}}</small>
-                                </div>
+                            <div class="mt-1">
+                                <small class="opacity-65">{{msg.time}}</small>
                             </div>
-                            <!-- Message: content -->
-
                         </div>
-                    </div>
-                    <!-- Message: row -->
+                        <!-- Message: content -->
 
+                    </div>
                 </div>
-                <!-- Message: body -->
+                <!-- Message: row -->
+
             </div>
-            <!-- Message -->
+            <!-- Message: Body -->
         </div>
+        <!-- Message from -->
+        <!-- Message to -->
+        <div class="message message-right" v-if="msg.type === 0">
+            <!-- Avatar -->
+            <div class="avatar avatar-sm ml-4 ml-lg-5 d-none d-lg-block">
+                <img class="avatar-img" src="assets/images/avatars/12.jpg" alt="">
+            </div>
+
+            <!-- Message: body -->
+            <div class="message-body">
+
+                <!-- Message: row -->
+                <div class="message-row">
+                    <div class="d-flex align-items-center justify-content-end">
+
+                        <!-- Message: content -->
+                        <div class="message-content bg-primary text-white">
+                            <div>{{msg.text}}</div>
+
+                            <div class="mt-1">
+                                <small class="opacity-65">{{msg.time}}</small>
+                            </div>
+                        </div>
+                        <!-- Message: content -->
+
+                    </div>
+                </div>
+                <!-- Message: row -->
+
+            </div>
+            <!-- Message: body -->
+        </div>
+        <!-- Message to -->
+    </div>
     </div>
 </template>
 
@@ -44,7 +75,7 @@
             msgs:'',
         },
         mounted() {
-            console.log(this.msgs)
+            console.log(this.users)
         }
     }
 </script>

@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,13 +15,11 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect(route('login'));
 });
 
 Auth::routes();
 
-Route::middleware('admin')
-    ->get('/register', function () {
-        return view('auth.register');
-    })->name('register');
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/createchat/{user_id}', 'ChatController@createPrivateChat')->name('createchat');
+Route::get('/home', 'ChatController@getUserChats')->name('home');
+Route::get('/chat/{chat_id}', 'ChatController@getMessages')->name('chat');

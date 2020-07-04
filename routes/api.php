@@ -18,4 +18,6 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+Route::get('/text/{chat_id}', 'MessageController@textTo')->name('text');
+
 Route::post('/chat/create', 'ChatController@createPrivateChat');

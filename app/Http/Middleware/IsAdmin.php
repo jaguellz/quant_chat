@@ -16,8 +16,8 @@ class IsAdmin
      */
     public function handle($request, Closure $next)
     {
-        if (Auth::user()->is_admin == 0){
-            return response("Forbidden",403);
+        if (!Auth::user() or Auth::user()->is_admin == 0){
+            return redirect('/');
         }
         return $next($request);
     }

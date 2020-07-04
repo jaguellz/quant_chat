@@ -4,6 +4,7 @@ namespace App\Repositories;
 
 use App\Repositories\BaseRepository;
 use App\Models\Message;
+use Illuminate\Http\Request;
 use Illuminate\Database\Eloquent\Model;
 
 /**
@@ -26,36 +27,17 @@ class MessageRepository extends BaseRepository {
     }
 
     /**
-     * @param int $user_id
+     * @param Request $request
      * @param int $chat_id
-     * @param string $text
      * @return mixed
      */
-    public function textTo($user_id, $chat_id, $text){
+    public function textTo($data){
         return Message::create([
-            'from_user_id' => $user_id,
-            'chat_id' => $chat_id,
-            'text' => $text,
+            'from_user_id' => $data['user_id'],
+            'chat_id' => $data['chat_id'],
+            'text' => $data['text'],
             'time' => now(),
         ]);
     }
 
-    /**
-     * @param int $chat_id
-     * @param int $user_id
-     * @return mixed
-     * get all messages from chat and makes it read
-     */
-    public function getFromChat($chat_id, $user_id){
-        $this->startCondition()
-            ->where('chat_id', $chat_id)
-            ->where('from_user_id', '!=', $user_id)
-            ->where('read, 0')
-            ->update([
-                'is_read' => 1,
-            ]);
-        return $messages = $this->startCondition()
-            ->where('chat_id', $chat_id)
-            ->get();
-    }
 }

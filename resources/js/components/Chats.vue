@@ -1,7 +1,7 @@
 <template>
     <div class="container">
         <!-- Card -->
-        <a class="text-reset nav-link p-0 mb-6" href="#" v-for="chat in this.chats">
+        <a class="text-reset nav-link p-0 mb-6" v-for="chat in this.chats" :href="chat.url">
             <div class="card card-active-listener">
                 <div class="card-body">
 
@@ -9,22 +9,23 @@
 
 
                         <div class="avatar mr-5">
-                            <img class="avatar-img" src="assets/images/avatars/11.jpg" alt="Bootstrap Themes">
+                            <img class="avatar-img" src='https://userinyerface.com/images/avatar_placeholder.png' :alt=chat.name>
                         </div>
 
                         <div class="media-body overflow-hidden">
                             <div class="d-flex align-items-center mb-1">
                                 <h6 class="text-truncate mb-0 mr-auto">{{chat.name}}</h6>
-                                <p class="small text-muted text-nowrap ml-4">{{chat.lastmsg}}</p>
+                                <p class="small text-muted text-nowrap ml-4">{{chat.time}}</p>
                             </div>
-                            <div class="text-truncate">Anna Bridges: Hey, Maher! How are you? The weather is great isn't it?</div>
+                            <div class="text-truncate" v-if="chat.lastmsgtext">{{chat.lastmsgfrom}}: {{chat.lastmsgtext}}</div>
+                            <div class="text-truncate" v-else>This chat is empty</div>
                         </div>
                     </div>
 
                 </div>
 
 
-                <div class="badge badge-circle badge-primary badge-border-light badge-top-right">
+                <div class="badge badge-circle badge-primary badge-border-light badge-top-right" v-if="chat.unread > 0">
                     <span>{{chat.unread}}</span>
                 </div>
 
