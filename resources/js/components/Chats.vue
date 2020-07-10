@@ -1,7 +1,10 @@
 <template>
     <div class="container">
+
+        <p @click="getData">TRytry</p>
+
         <!-- Card -->
-        <a class="text-reset nav-link p-0 mb-6" v-for="chat in this.chats" :href="chat.url">
+        <a class="text-reset nav-link p-0 mb-6" v-for="chat in this.chatData" :href="chat.url">
             <div class="card card-active-listener">
                 <div class="card-body">
 
@@ -40,9 +43,39 @@
     export default {
         props: {
             chats:'',
+            url: ''
+        },
+        data() {
+            return {
+                hats_: '',
+            }
+        },
+        computed: {
+            chatData: {
+                get() {
+                    if (!this.hats_) {
+                        this.hats_ = this.chats;
+                    }
+                    return this.hats_;
+                },
+
+                set(value) {
+                    this.hats_ = value;
+                }
+            }
+        },
+        methods: {
+            getData: function () {
+
+                axios.post(this.url)
+                    .then((response) =>{
+                        this.chatData = [];
+                        this.chatData = response.data;
+                    });
+            }
         },
         mounted() {
-            console.log(this.users)
+            setInterval(this.getData, 3000);
         }
     }
 </script>

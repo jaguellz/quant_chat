@@ -39,7 +39,7 @@
 
 
                                 <!-- Chats -->
-                                <chats :chats="{{$chats}}"></chats>
+                                <chats :chats="{{$chats}}" :url="'{{route('chatApi')}}'"></chats>
                                 <newchats :users="{{$users}}"></newchats>
                             </div>
                         </div>
