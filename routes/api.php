@@ -20,4 +20,4 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::get('/text/{chat_id}', 'MessageController@textTo')->name('text');
 
-Route::post('/chat/create', 'ChatController@createPrivateChat');
+Route::get('/getmsgs/{user_id}&{chat_id}', 'ChatController@getMessagesApi')->name('getMsgsApi');

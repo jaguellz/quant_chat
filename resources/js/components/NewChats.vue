@@ -16,7 +16,7 @@
                             <div class="d-flex align-items-center mb-1">
                                 <h6 class="text-truncate mb-0 mr-auto">{{user.name}}</h6>
                             </div>
-                            <div class="text-truncate">Create new chat with {{user.name}}</div>
+                            <div class="text-truncate">Начните общение с {{user.name}}</div>
                         </div>
                     </div>
                 </div>

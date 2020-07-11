@@ -21,7 +21,7 @@
                                                 <a class="dropdown-item" href="{{ route('logout') }}"
                                                    onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-                                                    {{ __('Logout') }}
+                                                    Выйти
                                                 </a>
 
                                                 <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
@@ -62,7 +62,7 @@
                     </div>
 
                     <h6>Привет, {{Auth::user()->name}}!</h6>
-                    <p>Выбери чат и начни общаться!</p>
+                    <p>Выберите чат для начала общения!</p>
                 </div>
             </div>
             <!-- Default Page -->

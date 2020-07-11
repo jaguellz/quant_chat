@@ -118,7 +118,7 @@
                     <!-- Chat: Content-->
                     <div class="chat-content px-lg-8">
                         <div class="container-xxl py-6 py-lg-10">
-                            <chat :msgs="{{$msgs}}" :url="'{{route('msgsApi', $chat['id'])}}'"></chat>
+                            <chat :url="'{{route('msgsApi', $chat['id'])}}'"></chat>
                         </div>
 
                         <!-- Scroll to end -->

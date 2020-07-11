@@ -18,7 +18,7 @@
                                 <p class="small text-muted text-nowrap ml-4">{{chat.time}}</p>
                             </div>
                             <div class="text-truncate" v-if="chat.lastmsgtext">{{chat.lastmsgfrom}}: {{chat.lastmsgtext}}</div>
-                            <div class="text-truncate" v-else>This chat is empty</div>
+                            <div class="text-truncate" v-else>Этот чат пустой</div>
                         </div>
                     </div>
 
