@@ -10,11 +10,11 @@
                         <div class="hide-scrollbar">
                             <div class="container-fluid py-6">
                                 <!-- Title -->
-                                <h2 class="font-bold mb-6">Chats</h2>
+                                <h2 class="font-bold mb-6">Чаты</h2>
                                     <ul class="navbar-nav ml-auto">
                                         <li class="nav-item dropdown">
                                             <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                                User: {{ Auth::user()->name }} <span class="caret"></span>
+                                                Пользователь: {{ Auth::user()->name }} <span class="caret"></span>
                                             </a>
 
                                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
@@ -29,7 +29,7 @@
                                                 </form>
 
                                                 @if(Auth::user()->is_admin == 1)
-                                                    <a class="dropdown-item" href="{{route('register')}}">Register user</a>
+                                                    <a class="dropdown-item" href="{{route('register')}}">Зарегестрировать пользователя</a>
                                                 @endif
                                             </div>
                                         </li>
@@ -61,8 +61,8 @@
                         <img class="avatar-img" src="assets/images/avatars/avatar.png" alt="">
                     </div>
 
-                    <h6>Hey, {{Auth::user()->name}}!</h6>
-                    <p>Please select a chat to start messaging.</p>
+                    <h6>Привет, {{Auth::user()->name}}!</h6>
+                    <p>Выбери чат и начни общаться!</p>
                 </div>
             </div>
             <!-- Default Page -->

@@ -1,8 +1,5 @@
 <template>
     <div class="container">
-
-        <p @click="getData">TRytry</p>
-
         <!-- Card -->
         <a class="text-reset nav-link p-0 mb-6" v-for="chat in this.chatData" :href="chat.url">
             <div class="card card-active-listener">

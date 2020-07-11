@@ -23,4 +23,5 @@ Auth::routes();
 Route::get('/createchat/{user_id}', 'ChatController@createPrivateChat')->name('createchat');
 Route::get('/home', 'ChatController@getUserChats')->name('home');
 Route::get('/chat/{chat_id}', 'ChatController@getMessages')->name('chat');
-Route::post('get/chat', 'ChatController@getMessagesApi')->name('chatApi');
+Route::post('get/chat', 'ChatController@getChatsApi')->name('chatApi');
+Route::post('get/msgs/{chat_id}', 'ChatController@getMessagesApi')->name('msgsApi');

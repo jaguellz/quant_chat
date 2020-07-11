@@ -1,7 +1,7 @@
 <template>
     <div class="container">
         <!-- Message from  -->
-        <div v-for="msg in this.msgs">
+        <div v-for="msg in this.msgs_">
         <div class="message" v-if="msg.type === 1">
             <!-- Avatar -->
             <a class="avatar avatar-sm mr-4 mr-lg-5" href="#" data-chat-sidebar-toggle="#chat-1-user-profile">
@@ -71,11 +71,39 @@
 
 <script>
     export default {
-        props: {
-            msgs:'',
-        },
-        mounted() {
-            console.log(this.users)
+            props: {
+                msgs:'',
+                url: ''
+            },
+            data() {
+                return {
+                    msgs_: '',
+                }
+            },
+            computed: {
+                chatData: {
+                    get() {
+                        if (!this.msgs_) {
+                            this.msgs_ = this.msgs;
+                        }
+                        return this.msgs_;
+                    },
+
+                    set(value) {
+                        this.msgs_ = value;
+                    }
+                }
+            },
+            methods: {
+                getData: function () {
+                    axios.post(this.url)
+                        .then((response) =>{
+                            this.chatData = response.data;
+                        });
+                }
+            },
+            mounted() {
+                setInterval(this.getData, 3000);
+            }
         }
-    }
 </script>

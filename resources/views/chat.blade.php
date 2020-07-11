@@ -12,18 +12,18 @@
                             <div class="container-fluid py-6">
 
                                 <!-- Title -->
-                                <h2 class="font-bold mb-6">Chats</h2>
+                                <h2 class="font-bold mb-6">Чаты</h2>
                                     <ul class="navbar-nav ml-auto">
                                         <li class="nav-item dropdown">
                                             <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                                User: {{ Auth::user()->name }} <span class="caret"></span>
+                                                Пользователь: {{ Auth::user()->name }} <span class="caret"></span>
                                             </a>
 
                                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                                 <a class="dropdown-item" href="{{ route('logout') }}"
                                                    onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-                                                    {{ __('Logout') }}
+                                                    Выйти
                                                 </a>
 
                                                 <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
@@ -31,7 +31,7 @@
                                                 </form>
 
                                                 @if(Auth::user()->is_admin == 1)
-                                                    <a class="dropdown-item" href="{{route('register')}}">Register user</a>
+                                                    <a class="dropdown-item" href="{{route('register')}}">Зарегестрировать пользователя</a>
                                                 @endif
                                             </div>
                                         </li>
@@ -118,7 +118,7 @@
                     <!-- Chat: Content-->
                     <div class="chat-content px-lg-8">
                         <div class="container-xxl py-6 py-lg-10">
-                            <chat :msgs="{{$msgs}}"></chat>
+                            <chat :msgs="{{$msgs}}" :url="'{{route('msgsApi', $chat['id'])}}'"></chat>
                         </div>
 
                         <!-- Scroll to end -->

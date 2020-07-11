@@ -60,10 +60,17 @@ class ChatController extends Controller
         ]);
     }
 
-    public function getMessagesApi(ChatRepository $chatRepository)
+    public function getChatsApi(ChatRepository $chatRepository)
     {
         $user_id = Auth::id();
         $chats = $chatRepository->getUserChats($user_id);
         return response()->json($chats);
+    }
+
+    public function getMessagesApi(ChatRepository $chatRepository, $chat_id)
+    {
+        $user_id = Auth::id();
+        $messages = $chatRepository->getMessages($chat_id, $user_id);
+        return response()->json($messages);
     }
 }
