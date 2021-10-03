@@ -21,3 +21,5 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::get('/text/{chat_id}', 'MessageController@textTo')->name('text');
 
 Route::get('/getmsgs/{user_id}&{chat_id}', 'ChatController@getMessagesApi')->name('getMsgsApi');
+
+Route::post('/zxc', function (){event(new \App\Events\MessageSentEvent('zxc i ti pokoynik'));});

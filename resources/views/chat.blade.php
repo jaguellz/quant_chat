@@ -116,9 +116,9 @@
                     <!-- Chat: Search -->
 
                     <!-- Chat: Content-->
-                    <div class="chat-content px-lg-8">
+                    <div class="chat-content px-lg-8"  id="chat">
                         <div class="container-xxl py-6 py-lg-10">
-                            <chat :url="'{{route('msgsApi', $chat['id'])}}'"></chat>
+                            <chat :url="'{{route('msgsApi', $chat['id'])}}'" :chat_id="'{{$chat['id']}}'"></chat>
                         </div>
 
                         <!-- Scroll to end -->
@@ -144,7 +144,7 @@
 
                                     <!-- Submit button -->
                                     <div class="col-auto">
-                                        <button class="btn btn-ico btn-primary rounded-circle" id="textto" type="submit" name="user_id" value="{{Auth::id()}}">
+                                        <button class="btn btn-ico btn-primary rounded-circle" id="textto" name="user_id" value="{{Auth::id()}}">
                                             <span class="fe-send"></span>
                                         </button>
                                     </div>

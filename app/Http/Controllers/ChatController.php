@@ -10,7 +10,6 @@ use Illuminate\Support\Facades\Auth;
 class ChatController extends Controller
 {
     /**
-     * TODO: do this shit
      * @param ChatRepository $chatRepository
      * @param array $users
      * @param string $name

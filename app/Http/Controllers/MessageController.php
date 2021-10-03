@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\MessageSentEvent;
+use App\Models\Chat;
 use App\Repositories\MessageRepository;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -20,7 +22,8 @@ class MessageController extends Controller
             'chat_id' => $chat_id,
             'text' => $request->text,
         ] ;
-       $messageRepository->textTo($data);
+        $message = $messageRepository->textTo($data);
+        event(new MessageSentEvent($message, Chat::find($chat_id)));
         return redirect(route('chat', $chat_id));
     }
 }

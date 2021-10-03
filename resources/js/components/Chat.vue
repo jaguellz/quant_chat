@@ -70,25 +70,41 @@
 </template>
 
 <script>
+
     export default {
-            props: {
-                url: ''
-            },
-            data() {
-                return {
-                    chatData: '',
-                }
-            },
-            methods: {
-                getData: function () {
-                    axios.post(this.url)
-                        .then((response) =>{
-                            this.chatData = response.data;
-                        });
-                }
-            },
-            mounted() {
-                setInterval(this.getData, 1000);
+        props: {
+            url: '',
+            chat_id: ''
+        },
+        data() {
+            return {
+                chatData: ''
             }
+        },
+        methods:{
+            getData(){
+                axios.post(this.url)
+                    .then((response) =>{
+                        this.chatData = response.data;
+                    });
+            }
+        },
+        beforeMount() {
+            this.getData();
+        },
+        mounted() {
+            const pusher = new Pusher('f53adf27ccb40062e772', {
+                cluster: 'eu'
+            });
+            const channel = pusher.subscribe(this.chat_id + '-channel');
+            channel.bind('message-sent', (data) => {
+                this.getData();
+            });
+        },
+        updated() {
+            let chat = document.getElementById('chat');
+            console.log(chat.scrollHeight);
+            chat.scrollTop = 1000000000000000000000;
         }
+    }
 </script>
